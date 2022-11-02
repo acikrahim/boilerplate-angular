@@ -1,0 +1,9 @@
+<div class="translation">
+    <span class="translation-label">{{ 'general.language' | translate }}</span>
+    <div class="translation-dropdown">
+        <mat-select (selectionChange)="setLanguage($event.value)" [value]="currentSelectedLanguage">
+            <mat-option value="en">English</mat-option>
+            <mat-option value="ms">Malay</mat-option>
+        </mat-select>
+    </div>
+</div>

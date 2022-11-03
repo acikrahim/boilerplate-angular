@@ -5,11 +5,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LocalService {
-
-  key = "123";
-
-  constructor() { }
-
   set(key: string, value: string) {
     localStorage.setItem(key, value);
   }

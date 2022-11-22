@@ -1,6 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+
 import { AuthService } from "src/app/services/auth.service";
+import { SessionService } from "src/app/services/session.service";
+
+import { LoginResponse } from "src/app/models/interfaces";
 
 @Component({
     selector: 'auth-login',
@@ -10,7 +14,8 @@ import { AuthService } from "src/app/services/auth.service";
 export class AuthLogin implements OnInit {
     constructor(
         private form: FormBuilder,
-        private authService: AuthService
+        private auth: AuthService,
+        private session: SessionService
     ) {
 
     }
@@ -26,11 +31,13 @@ export class AuthLogin implements OnInit {
 
     public sendLogin() {
         console.log(this.loginForm.value)
-        this.authService.login(this.loginForm.value).subscribe({
-            next: data => {
-                console.log(data);
+        this.auth.login(this.loginForm.value).subscribe({
+            next: (response: LoginResponse) => {
+                this.session.user = response.user;
+                // redirect
             },
             error: err => {
+                console.log(err)
             }
         });
     }

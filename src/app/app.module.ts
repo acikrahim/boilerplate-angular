@@ -9,9 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RequestInterceptorService } from './services/request-interceptor.service';
 
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-
 import { TranslationModule } from './shared/translation/translation.module';
 
 @NgModule({
@@ -32,9 +29,7 @@ import { TranslationModule } from './shared/translation/translation.module';
         deps: [HttpClient]
       }
     }),
-    TranslationModule,
-    MatToolbarModule,
-    MatIconModule
+    TranslationModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptorService, multi: true}

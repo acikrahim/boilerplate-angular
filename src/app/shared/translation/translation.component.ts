@@ -1,8 +1,6 @@
 import { Component } from "@angular/core";
 import { LangChangeEvent, TranslateService } from "@ngx-translate/core";
 
-// import { Local}
-
 @Component({
     selector: 'app-translation',
     templateUrl: './translation.component.html',
@@ -11,6 +9,18 @@ import { LangChangeEvent, TranslateService } from "@ngx-translate/core";
 
 export class TranslationComponent {
     selectedLanguage: string = 'en';
+    languageList = [
+        {
+            value: 'en',
+            label: 'English'
+        },
+        {
+            value: 'ms',
+            label: 'Malay'
+        }
+    ]
+
+    selectedLangObj: any;
 
     get currentSelectedLanguage() {
         return this.selectedLanguage;
@@ -20,13 +30,16 @@ export class TranslationComponent {
         private translate: TranslateService
     ) {
         this.selectedLanguage = translate.currentLang;
+        this.selectedLangObj = this.languageList.filter((o: any) => {
+            return o.value == this.selectedLanguage;
+        })[0];
         this.translate.onLangChange.subscribe((languageObject: LangChangeEvent) => {
             this.selectedLanguage = languageObject.lang;
         })
     }
 
-    setLanguage(language: string) {
-        console.log(language)
-        this.translate.use(language)
+    setLanguage(langObj: any) {
+        this.selectedLangObj = langObj;
+        this.translate.use(langObj.value)
     }
 }

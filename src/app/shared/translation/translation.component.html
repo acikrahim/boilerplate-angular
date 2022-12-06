@@ -1,4 +1,4 @@
-<div class="translation">
+<!-- <div class="translation">
     <span class="translation-label">{{ 'general.language' | translate }}</span>
     <div class="translation-dropdown">
         <mat-select (selectionChange)="setLanguage($event.value)" [value]="currentSelectedLanguage">
@@ -6,4 +6,19 @@
             <mat-option value="ms">Malay</mat-option>
         </mat-select>
     </div>
-</div>
+</div> -->
+
+<li class="nav-item">
+    <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle rounded-pill" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            {{ selectedLangObj.label }}
+        </a>
+
+        <ul class="dropdown-menu">
+            <li class="p-2" *ngFor="let lang of languageList" (click)="setLanguage(lang)">
+                {{ lang.label }}
+            </li>
+        </ul>
+    </div>
+</li>

@@ -2,7 +2,8 @@
     "general": {
         "language": "Language",
         "back": "Back",
-        "send": "Send"
+        "send": "Send",
+        "submit": "Submit"
     },
     "auth": {
         "login": "Login",

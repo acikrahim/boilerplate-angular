@@ -37,12 +37,12 @@ const routes: Routes = [
             {
                 path: 'reset-password',
                 component: AuthResetPassword,
-                canActivate: [AuthGuard]
+                // canActivate: [AuthGuard]
             },
             {
                 path: 'change-password',
                 component: AuthChangePassword,
-                canActivate: [AuthGuard]
+                // canActivate: [AuthGuard]
             }
         ]
     }

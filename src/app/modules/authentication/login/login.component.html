@@ -5,11 +5,13 @@
     <div class="card-body p-4">
         <form [formGroup]="loginForm" (submit)="sendLogin()">
             <div class="mt-2 mb-4">
-                <input type="text" class="form-control" formControlName="identifier" id="identifier" placeholder="{{ 'auth.enter_username_or_email' | translate }}">
+                <input type="text" class="form-control" formControlName="identifier" placeholder="{{ 'auth.enter_username_or_email' | translate }}">
             </div>
             <div class="input-group mb-4">
-                <input type="password" class="form-control" formControlName="password" #password id="password" placeholder="{{ 'auth.password' | translate }}">
-                <div class="input-group-addon ml-auto d-flex align-items-center p-2 border rounded-end bg-light" (click)="showHidePassword()">
+                <input type="password" class="form-control" formControlName="password" #password placeholder="{{ 'auth.password' | translate }}">
+                <div 
+                    class="input-group-addon ml-auto d-flex align-items-center p-2 border rounded-end bg-light" 
+                    (click)="password.getAttribute('type') == 'text' ? password.setAttribute('type', 'password') : password.setAttribute('type', 'text')">
                     <i-feather name="{{password.getAttribute('type') == 'text' ? 'eye' : 'eye-off'}}"></i-feather>
                 </div>
             </div>

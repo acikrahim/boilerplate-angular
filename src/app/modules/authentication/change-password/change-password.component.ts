@@ -16,7 +16,7 @@ export class AuthChangePassword implements OnInit {
     changePasswordForm = this.form.group({
         password: [null, Validators.required],
         currentPassword: [null, Validators.required],
-        passwordConfirmation: [null, Validators.required]
+        confirmPassword: [null, Validators.required]
     })
 
     ngOnInit(): void {

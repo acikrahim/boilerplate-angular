@@ -7,11 +7,15 @@
             <div class="mt-2 mb-4">
                 <input type="text" class="form-control" formControlName="username" placeholder="{{ 'auth.username' | translate }}">
             </div>
-            <div class="mb-3">
+            <div class="mb-4">
                 <input type="email" class="form-control" formControlName="email" placeholder="{{ 'auth.email' | translate }}">
             </div>
-            <div class="mb-3">
-                <input type="password" class="form-control" formControlName="password" placeholder="{{ 'auth.password' | translate }}">
+            <div class="input-group mb-4">
+                <input type="password" class="form-control" #password formControlName="password" placeholder="{{ 'auth.password' | translate }}">
+                <div class="input-group-addon ml-auto d-flex align-items-center p-2 border rounded-end bg-light"
+                    (click)="password.getAttribute('type') == 'text' ? password.setAttribute('type', 'password') : password.setAttribute('type', 'text')">
+                    <i-feather name="{{password.getAttribute('type') == 'text' ? 'eye' : 'eye-off'}}"></i-feather>
+                </div>
             </div>
 
             <button class="btn btn-primary float-end">{{ 'general.submit' | translate }}</button>

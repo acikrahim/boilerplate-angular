@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 import { AuthService } from "src/app/services/auth.service";
@@ -12,6 +12,8 @@ import { LoginResponse } from "src/app/models/interfaces";
 })
 
 export class AuthLogin implements OnInit {
+    @ViewChild('password') password: ElementRef | undefined;
+
     constructor(
         private form: FormBuilder,
         private auth: AuthService,
@@ -40,5 +42,12 @@ export class AuthLogin implements OnInit {
                 console.log(err)
             }
         });
+    }
+
+    public showHidePassword() {
+        if (this.password?.nativeElement.getAttribute('type') == 'text')
+            this.password?.nativeElement.setAttribute('type', 'password')
+        else
+            this.password?.nativeElement.setAttribute('type', 'text')
     }
 }

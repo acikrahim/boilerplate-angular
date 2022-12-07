@@ -3,6 +3,8 @@ import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { TranslateModule } from "@ngx-translate/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FeatherModule } from 'angular-feather';
+import { Eye, EyeOff } from 'angular-feather/icons';
 
 import { TranslationModule } from "src/app/shared/translation/translation.module";
 
@@ -54,6 +56,10 @@ const routes: Routes = [
         ReactiveFormsModule,
         TranslateModule,
         TranslationModule,
+        FeatherModule.pick({
+            Eye,
+            EyeOff
+        }),
     ],
     declarations: [
         AuthenticationComponent,

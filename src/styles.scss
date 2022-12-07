@@ -2,3 +2,32 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* home */
+.home-container {
+    height: calc(100vh - 48px);
+    margin: 0;
+    color: #777;
+
+    .bg-img {
+        position: relative;
+        opacity: 0.65;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        &.bg-img-100 {
+            min-height: 100%;
+        }
+
+        &.bg-img-400 {
+            min-height: 400px;
+        }
+    }
+}
+
+/* auth */
+.auth-container {
+    height: calc(100vh - 48px);
+}

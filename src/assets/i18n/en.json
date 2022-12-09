@@ -3,7 +3,8 @@
         "language": "Language",
         "back": "Back",
         "send": "Send",
-        "submit": "Submit"
+        "submit": "Submit",
+        "close": "Close"
     },
     "auth": {
         "login": "Login",

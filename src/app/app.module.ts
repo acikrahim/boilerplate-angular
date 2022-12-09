@@ -4,16 +4,21 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { RequestInterceptorService } from './services/request-interceptor.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { TranslationModule } from './shared/translation/translation.module';
 
+import { RequestInterceptorService } from './services/request-interceptor.service';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { ModalComponent } from './services/modal/modal.component';
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,8 @@ import { TranslationModule } from './shared/translation/translation.module';
         deps: [HttpClient]
       }
     }),
-    TranslationModule
+    TranslationModule,
+    NgbModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptorService, multi: true}

@@ -1,6 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
+import { AuthService } from "src/app/services/auth.service";
+
+import { ForgotPasswordResponse } from "src/app/models/interfaces";
+
 @Component({
     selector: 'auth-forgot-password',
     templateUrl: 'forgot-password.component.html'
@@ -8,7 +12,8 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 export class AuthForgotPassword implements OnInit {
     constructor(
-        private form: FormBuilder
+        private form: FormBuilder,
+        private auth: AuthService,
     ) {
 
     }
@@ -22,6 +27,13 @@ export class AuthForgotPassword implements OnInit {
     }
 
     public sendForgotPasswordForm() {
-        console.log(this.forgotPasswordForm)
+        this.auth.forgotPassword(this.forgotPasswordForm.value).subscribe({
+            next: (response: ForgotPasswordResponse) => {
+                console.log(response)
+            },
+            error: err => {
+                console.log(err)
+            }
+        });
     }
 }

@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -30,4 +33,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* auth */
 .auth-container {
     height: calc(100vh - 48px);
+
+    .card-header {
+        background-image: linear-gradient(to right, #ebebeb, #e0e0e0, #d4d4d4, #c9c9c9, #bebebe);
+    }
 }

@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { LoginResponse } from '../models/interfaces';
+import { LoginResponse, ForgotPasswordResponse } from '../models/interfaces';
 
-const AUTH_API = 'http://localhost:1337/api/auth/local';
+const LOGIN_API = 'http://localhost:1337/api/auth/local';
+const FORGOT_PASSWORD_API = 'http://localhost:1337/api/auth/forgot-password';
+const RESET_PASSWORD_API = 'http://localhost:1337/api/auth/reset-password';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,13 +24,29 @@ export class AuthService {
 
     login(loginForm: Object): Observable<LoginResponse> {
         return this.http.post<LoginResponse>(
-            AUTH_API,
+            LOGIN_API,
             loginForm,
             httpOptions
         )
     }
 
+    forgotPassword(emailObj: Object): Observable<ForgotPasswordResponse> {
+        return this.http.post<ForgotPasswordResponse>(
+            FORGOT_PASSWORD_API,
+            emailObj,
+            httpOptions
+        )
+    }
+
+    resetPassword(resetPasswordForm: Object): Observable<LoginResponse> {
+        return this.http.post<LoginResponse>(
+            RESET_PASSWORD_API,
+            resetPasswordForm,
+            httpOptions
+        )
+    }
+
     logout(): Observable<any> {
-        return this.http.post(AUTH_API + 'signout', {}, httpOptions);
+        return this.http.post(LOGIN_API + 'signout', {}, httpOptions);
     }
 }

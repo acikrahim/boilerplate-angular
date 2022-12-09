@@ -1,3 +1,5 @@
+import { TemplateRef } from '@angular/core';
+
 export interface User {
     blocked: boolean;
     confirmed: boolean;
@@ -12,4 +14,18 @@ export interface User {
 export interface LoginResponse {
     jwt: string;
     user: User;
+}
+
+export interface ForgotPasswordResponse {
+    ok: boolean
+}
+
+export interface TemplateRefObj {
+    templateName: string;
+    templateRef: TemplateRef<any>;
+}
+
+export interface ModalContent {
+    modalTitle: string;
+    modalBody: string;
 }

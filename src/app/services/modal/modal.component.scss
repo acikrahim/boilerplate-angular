@@ -1,0 +1,5 @@
+.modal-header, .modal-footer {
+    &.success {
+        background-image: linear-gradient(to right, #1ec878, #1cb76f, #1ba767, #1a975e, #198755);
+    }
+}

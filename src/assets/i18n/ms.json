@@ -4,6 +4,9 @@
         "back": "Kembali",
         "send": "Hantar"
     },
+    "validation": {
+        "required": "Ruang ini wajib diisi."
+    },
     "auth": {
         "login": "Log Masuk",
         "enter_username_or_email": "Masukkan ID pengguna atau emel",

@@ -6,7 +6,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { TranslationModule } from './shared/translation/translation.module';
+import { TranslationModule } from './shared';
 
 import { RequestInterceptorService } from './services/request-interceptor.service';
 

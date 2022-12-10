@@ -11,6 +11,7 @@ import { ModalContent } from "src/app/models/interfaces";
 
 export class ModalComponent implements AfterViewInit {
     @ViewChild('successModal') successModal!: TemplateRef<any>;
+    @ViewChild('errorModal') errorModal!: TemplateRef<any>;
     modalContent: ModalContent;
 
     constructor(
@@ -27,6 +28,10 @@ export class ModalComponent implements AfterViewInit {
             {
                 templateName: 'successModal',
                 templateRef: this.successModal
+            },
+            {
+                templateName: 'errorModal',
+                templateRef: this.errorModal
             }
         ]
     }

@@ -6,18 +6,22 @@
         <form [formGroup]="loginForm" (submit)="sendLoginForm()">
             <div class="mt-2 mb-4">
                 <input type="text" class="form-control" formControlName="identifier" placeholder="{{ 'auth.enter_username_or_email' | translate }}">
+                <validation-message [FormControl]="loginForm.controls['identifier']"></validation-message>
             </div>
-            <div class="input-group mb-2">
-                <input type="password" class="form-control" formControlName="password" #password placeholder="{{ 'auth.password' | translate }}">
-                <div 
-                    class="input-group-addon ml-auto d-flex align-items-center p-2 border rounded-end bg-light" 
-                    (click)="password.getAttribute('type') == 'text' ? password.setAttribute('type', 'password') : password.setAttribute('type', 'text')">
-                    <i-feather name="{{password.getAttribute('type') == 'text' ? 'eye' : 'eye-off'}}"></i-feather>
+            <div class="mb-4">
+                <div class="input-group">
+                    <input type="password" class="form-control" formControlName="password" #password placeholder="{{ 'auth.password' | translate }}">
+                    <div 
+                        class="input-group-addon ml-auto d-flex align-items-center p-2 border rounded-end bg-light" 
+                        (click)="password.getAttribute('type') == 'text' ? password.setAttribute('type', 'password') : password.setAttribute('type', 'text')">
+                        <i-feather name="{{password.getAttribute('type') == 'text' ? 'eye' : 'eye-off'}}"></i-feather>
+                    </div>
                 </div>
+                <validation-message [FormControl]="loginForm.controls['password']"></validation-message>
             </div>
 
             <div class="mb-4 text-end">
-                <a [routerLink]="['../forgot-password']">Forgot Password</a>
+                <a [routerLink]="['../forgot-password']" style="letter-spacing: .125rem">{{ 'auth.forgot_password' | translate }} ?</a>
             </div>
 
             <button class="btn btn-primary float-end">{{ 'general.submit' | translate }}</button>

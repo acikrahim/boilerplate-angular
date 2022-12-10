@@ -1,11 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, Validators } from "@angular/forms";
 
-import { AuthService } from "src/app/services/auth.service";
-import { SessionService } from "src/app/services/session.service";
-import { ModalService } from "src/app/services/modal/modal.service";
+import { AuthService, SessionService, ErrorHandlingService } from "src/app/services/";
 
 import { LoginResponse } from "src/app/models/interfaces";
 
@@ -21,8 +18,7 @@ export class AuthLogin implements OnInit {
         private auth: AuthService,
         private session: SessionService,
         public router: Router,
-        private modal: ModalService,
-        private ngbModal: NgbModal
+        private errorHandling: ErrorHandlingService
     ) {
 
     }
@@ -33,25 +29,22 @@ export class AuthLogin implements OnInit {
     })
 
     ngOnInit(): void {
-        
+        this.auth.logout();
     }
 
     public sendLoginForm() {
-        // this.ngbModal.open(this.modal.getTemplateRef('successModal', { modalTitle: 'test', modalBody: 'test'})?.templateRef).result.then((result) => {
-        //     console.log(result)
-        //     console.log('result')
-        // }, (reason) => {
-        //     console.log(reason)
-        //     console.log('reason')
-        // });
-        this.auth.login(this.loginForm.value).subscribe({
-            next: (response: LoginResponse) => {
-                this.session.user = response.user;
-                // redirect
-            },
-            error: err => {
-                console.log(err)
-            }
-        });
+        this.loginForm.markAllAsTouched();
+        if (this.loginForm.valid) {
+            this.auth.login(this.loginForm.value).subscribe({
+                next: (response: LoginResponse) => {
+                    this.session.user = response.user;
+                    this.router.navigate(['./home/parallax'])
+                },
+                error: e => {
+                    this.errorHandling.getErrorHandlingModal(e.error.error);
+                    this.loginForm.reset()
+                }
+            });
+        }
     }
 }

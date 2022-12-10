@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { LocalStorageService } from './local-storage.service';
+
 import { LoginResponse, ForgotPasswordResponse } from '../models/interfaces';
 
 const LOGIN_API = 'http://localhost:1337/api/auth/local';
@@ -17,7 +19,8 @@ const httpOptions = {
 })
 export class AuthService {
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private localStorage: LocalStorageService
     ) {
 
     }
@@ -46,7 +49,7 @@ export class AuthService {
         )
     }
 
-    logout(): Observable<any> {
-        return this.http.post(LOGIN_API + 'signout', {}, httpOptions);
+    logout() {
+        this.localStorage.clear();
     }
 }

@@ -2,8 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 
-import { AuthService } from "src/app/services/auth.service";
-import { SessionService } from "src/app/services/session.service";
+import { AuthService, SessionService } from "src/app/services";
 
 import { LoginResponse } from "src/app/models/interfaces";
 

@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FeatherModule } from 'angular-feather';
 import { Eye, EyeOff } from 'angular-feather/icons';
 
-import { TranslationModule } from "src/app/shared/translation/translation.module";
+import { TranslationModule, ValidationMessageComponent } from "src/app/shared";
 
 import { AuthGuard } from "src/app/guard/auth.guard";
 
@@ -61,6 +61,7 @@ const routes: Routes = [
         }),
     ],
     declarations: [
+        ValidationMessageComponent,
         AuthenticationComponent,
         AuthLogin,
         AuthRegister,

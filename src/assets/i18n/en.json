@@ -6,6 +6,9 @@
         "submit": "Submit",
         "close": "Close"
     },
+    "validation": {
+        "required": "This field is mandatory."
+    },
     "auth": {
         "login": "Login",
         "enter_username_or_email": "Enter username or email",

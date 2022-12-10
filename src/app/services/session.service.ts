@@ -32,4 +32,8 @@ export class SessionService {
         this.localStorage.set('user', JSON.stringify(user))
     }
 
+    removeUser() {
+        this.localStorage.clear();
+    }
+
 }

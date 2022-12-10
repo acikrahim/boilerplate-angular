@@ -29,3 +29,10 @@ export interface ModalContent {
     modalTitle: string;
     modalBody: string;
 }
+
+export interface ApiErrorResponse {
+    details: Object | {};
+    message: string;
+    name: string;
+    status: number;
+}

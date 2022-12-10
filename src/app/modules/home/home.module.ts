@@ -4,7 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { TranslateModule } from "@ngx-translate/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-import { TranslationModule } from "src/app/shared/translation/translation.module";
+import { TranslationModule } from "src/app/shared";
 
 // import { AuthGuard } from "src/app/guard/auth.guard";
 

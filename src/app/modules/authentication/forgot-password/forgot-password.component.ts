@@ -27,13 +27,17 @@ export class AuthForgotPassword implements OnInit {
     }
 
     public sendForgotPasswordForm() {
-        this.auth.forgotPassword(this.forgotPasswordForm.value).subscribe({
-            next: (response: ForgotPasswordResponse) => {
-                console.log(response)
-            },
-            error: err => {
-                console.log(err)
-            }
-        });
+        console.log(this.forgotPasswordForm.controls.email)
+        this.forgotPasswordForm.markAllAsTouched();
+        if (this.forgotPasswordForm.valid) {
+            this.auth.forgotPassword(this.forgotPasswordForm.value).subscribe({
+                next: (response: ForgotPasswordResponse) => {
+                    console.log(response)
+                },
+                error: err => {
+                    console.log(err)
+                }
+            });
+        }
     }
 }

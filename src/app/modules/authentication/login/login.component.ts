@@ -38,6 +38,7 @@ export class AuthLogin implements OnInit {
             this.auth.login(this.loginForm.value).subscribe({
                 next: (response: LoginResponse) => {
                     this.session.user = response.user;
+                    this.session.jwtToken = response.jwt;
                     this.router.navigate(['./home/parallax'])
                 },
                 error: e => {

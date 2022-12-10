@@ -1,5 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { LoginResponse } from "src/app/models/interfaces";
+
+import { AuthService, SessionService, ErrorHandlingService } from "src/app/services/";
 
 @Component({
     selector: 'auth-register',
@@ -8,7 +12,11 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 export class AuthRegister implements OnInit {
     constructor(
-        private form: FormBuilder
+        private form: FormBuilder,
+        private auth: AuthService,
+        private session: SessionService,
+        public router: Router,
+        private errorHandling: ErrorHandlingService
     ) {
 
     }
@@ -25,5 +33,20 @@ export class AuthRegister implements OnInit {
 
     public sendRegistration() {
         console.log(this.registerForm)
+
+        this.registerForm.markAllAsTouched();
+        if (this.registerForm.valid) {
+            this.auth.register(this.registerForm.value).subscribe({
+                next: (response: LoginResponse) => {
+                    this.session.user = response.user;
+                    this.session.jwtToken = response.jwt;
+                    this.router.navigate(['./home/parallax'])
+                },
+                error: e => {
+                    this.errorHandling.getErrorHandlingModal(e.error.error);
+                    this.registerForm.reset()
+                }
+            });
+        }
     }
 }

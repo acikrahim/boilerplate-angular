@@ -7,7 +7,8 @@
         "close": "Close"
     },
     "validation": {
-        "required": "This field is mandatory."
+        "required": "This field is mandatory.",
+        "pattern": "This is not a correct pattern."
     },
     "auth": {
         "login": "Login",

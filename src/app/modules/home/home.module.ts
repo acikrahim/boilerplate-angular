@@ -17,7 +17,7 @@ const routes: Routes = [
         component: HomeComponent,
         children: [
             {
-                path: 'parallax',
+                path: '',
                 component: HomeParallax
             },
             // {

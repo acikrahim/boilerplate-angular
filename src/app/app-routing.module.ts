@@ -6,12 +6,16 @@ const routes: Routes = [
     path: '',
     children: [
       {
+        path: '',
+        loadChildren: () => import('./modules/home/home.module').then((x) => x.HomeModule)
+      },
+      {
         path: 'auth',
         loadChildren: () => import('./modules/authentication/authentication.module').then((x) => x.AuthenticationModule)
       },
       {
-        path: 'home',
-        loadChildren: () => import('./modules/home/home.module').then((x) => x.HomeModule)
+        path: 'admin',
+        loadChildren: () => import('./modules/admin/admin.module').then((x) => x.AdminModule)
       }
     ]
   }

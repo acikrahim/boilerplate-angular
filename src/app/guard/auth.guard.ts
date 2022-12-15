@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { SessionService } from '../services/session.service';
 
@@ -11,6 +12,7 @@ export class AuthGuard implements CanActivate {
 
   constructor(
     private session: SessionService,
+    private router: Router
   ) {
 
   }
@@ -20,7 +22,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       console.log(this.session)
     if (!this.session.isJwtTokenExist) {
-      // window.location.href = window.location.origin
+      this.router.navigate(['./auth/login'])
       return false;
     } else {
       return true

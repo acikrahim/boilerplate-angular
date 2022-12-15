@@ -11,9 +11,12 @@
         <ng-container *ngIf="!compactNavbar">
             <ul class="nav">
                 <app-translation></app-translation>
-                <!-- <li class="nav-item">
-                    <a class="nav-link">Home</a>
-                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['./auth/login']">Auth</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['./admin']">Admin</a>
+                </li>
             </ul>
         </ng-container>
 

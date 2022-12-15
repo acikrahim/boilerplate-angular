@@ -39,7 +39,7 @@ export class AuthLogin implements OnInit {
                 next: (response: LoginResponse) => {
                     this.session.user = response.user;
                     this.session.jwtToken = response.jwt;
-                    this.router.navigate(['./home/parallax'])
+                    this.router.navigate(['./'])
                 },
                 error: e => {
                     this.errorHandling.getErrorHandlingModal(e.error.error);
